@@ -6,7 +6,10 @@ import numpy as np
 import pickle
 
 
-df = pd.read_csv('C:\D-Drive\ComputerScience\SentiMERN\SentiMERN\sentimentModel\\api\chat_dataset.csv')
+df1 = pd.read_csv('C:\D-Drive\ComputerScience\SentiMERN\SentiMERN\sentimentModel\\api\chat_dataset.csv')
+df2 = pd.read_csv('./train.csv', encoding='unicode_escape')
+df2 = df2[['text', 'sentiment']].rename(columns = {"text":"message"})
+df = pd.concat([df1, df2])
 
 def clean_message(message):
     stopwords = nltk.corpus.stopwords.words('english')
@@ -17,7 +20,7 @@ def clean_message(message):
     return ' '.join(message_cleaned)
 
 if __name__ == '__main__':
-    df['text_cleaned'] = df['message'].apply(clean_message)
+    df['text_cleaned'] = df['message'].astype(str).apply(clean_message)
     print(df['sentiment'].value_counts())
     messages_clean = np.array(df['text_cleaned'])
     print(df)

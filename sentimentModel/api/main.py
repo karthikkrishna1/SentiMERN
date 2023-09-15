@@ -22,7 +22,10 @@ def create_app():
         preds = model.predict(padded_sequences)[0]
         ans = np.argmax(preds)
         print(ans)
-        result = "neutral" if ans == 1 else "positive" if  ans == 2 else "negative"
+        if preds[ans] < 0.5:
+            result = "Not so Sure"
+        else:
+            result = "neutral" if ans == 1 else "positive" if  ans == 2 else "negative"
         return jsonify(result)
 
 
