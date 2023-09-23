@@ -9,6 +9,7 @@ Currently Employed:
 -  Scraped news articles from their links using cheerio and analysed the sentiment of their content
 
 Planned Features:
+-  Analysis in other languages as well ( current idea: using google translate API to convert text to english and analyse)
 -  Detecting face emotion through image
 -  Getting text from image (OCR) and analysing
 -  and more....
