@@ -6,10 +6,11 @@ import numpy as np
 import pickle
 
 
-df1 = pd.read_csv('C:\D-Drive\ComputerScience\SentiMERN\SentiMERN\sentimentModel\\api\chat_dataset.csv')
-df2 = pd.read_csv('./train.csv', encoding='unicode_escape')
+df1 = pd.read_csv('C:\D-Drive\ComputerScience\SentiX\SentiX\sentimentModel\\api\chat_dataset.csv')
+df2 = pd.read_csv('C:\D-Drive\ComputerScience\SentiX\SentiX\sentimentModel\\api\\train.csv', encoding='unicode_escape')
+df3 = pd.read_csv('C:\D-Drive\ComputerScience\SentiX\SentiX\sentimentModel\\api\\all-data.csv',names = ["sentiment", "message"], encoding='unicode_escape')
 df2 = df2[['text', 'sentiment']].rename(columns = {"text":"message"})
-df = pd.concat([df1, df2])
+df = pd.concat([df1, df2, df3])
 
 def clean_message(message):
     stopwords = nltk.corpus.stopwords.words('english')

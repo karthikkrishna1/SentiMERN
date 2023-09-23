@@ -12,7 +12,7 @@ const PredictionList = () => {
   return (
     <Stack>
       {preds ? (
-        preds.map((pred) => (
+        preds.map((pred, idx) => (
           <Box
             width={600}
             textAlign={"center"}
@@ -20,12 +20,19 @@ const PredictionList = () => {
             p={2}
             borderRadius={5}
             border={1}
-            key={pred}
+            key={idx}
+            bgcolor={
+              pred.prediction === "positive"
+                ? "green"
+                : pred.prediction === "negative"
+                ? "red"
+                : ""
+            }
           >
             <Typography fontSize={50} fontWeight={"bold"}>
               {pred.input}
             </Typography>
-            <Typography fontSize={30}>{pred.prediction}</Typography>
+            <Typography fontSize={30}>predn: {pred.prediction}</Typography>
           </Box>
         ))
       ) : (

@@ -7,4 +7,6 @@ router
   .post(predictController.predict_sent)
   .get((req, res) => res.send("hello"));
 
+router.route("/link").post(predictController.predict_link);
+
 module.exports = router;
