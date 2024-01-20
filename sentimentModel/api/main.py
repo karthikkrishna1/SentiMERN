@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import numpy as np
 import tensorflow as tf
 import pickle
@@ -9,6 +10,7 @@ tokenizer = pickle.load(open('tokenizer.pkl','rb'))
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.config['SECRET_KEY'] = 'hsu123nxhsuqw'
 
     @app.route('/predict', methods = ['POST'])

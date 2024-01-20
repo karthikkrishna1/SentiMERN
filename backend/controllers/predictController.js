@@ -9,7 +9,7 @@ const predict_sent = asyncHandler(async (req, res) => {
   }
   console.log(text);
   const ans = await request({
-    uri: "http://localhost:5000/predict",
+    uri: "http://127.0.0.1:5000/predict",
     body: { text: text },
     method: "POST",
     json: true,

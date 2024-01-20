@@ -20,7 +20,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon backend/server",
-    "start": "node server"
+    "start": "node backend/server"
   },
   "repository": {
     "type": "git",
