@@ -33,8 +33,8 @@ const SearchBox = () => {
         return;
       }
       const apiLink = !link
-        ? "http://localhost:5001/predict"
-        : "http://localhost:5001/predict/link";
+        ? "https://senti-x-server.vercel.app/predict"
+        : "https://senti-x-server.vercel.app/predict/link";
       console.log("posted");
       const { data: prediction } = await axios.post(apiLink, {
         text: input,
