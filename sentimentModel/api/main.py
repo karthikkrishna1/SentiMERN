@@ -4,6 +4,8 @@ import numpy as np
 import tensorflow as tf
 import pickle
 from model import clean_message
+import os
+PORT = os.getenv('PORT')
 
 model = tf.keras.models.load_model('sentiment_model.h5')
 tokenizer = pickle.load(open('tokenizer.pkl','rb'))
@@ -29,4 +31,4 @@ def predict_sentiment():
     return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", debug=True)
+    app.run(host = "0.0.0.0",port = PORT, debug=True)
