@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import nltk
 from flask_cors import CORS
 import numpy as np
 import tensorflow as tf
@@ -6,7 +7,7 @@ import pickle
 from model import clean_message
 import os
 PORT = os.getenv('PORT')
-
+nltk.download('popular')
 model = tf.keras.models.load_model('sentiment_model.h5')
 tokenizer = pickle.load(open('tokenizer.pkl','rb'))
 app = Flask(__name__)
