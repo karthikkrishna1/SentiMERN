@@ -30,8 +30,8 @@ def predict_sentiment():
         else:
             result = "neutral" if ans == 1 else "positive" if  ans == 2 else "negative"
         return jsonify(result)
-    except:
-        return jsonify("encountered error")
+    except Exception as error:
+        return jsonify(f"encountered error {error}")
     
 if __name__ == "__main__":
     app.run(host= "0.0.0.0", port=PORT)
