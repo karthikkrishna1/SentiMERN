@@ -9,7 +9,7 @@ const predict_sent = asyncHandler(async (req, res) => {
   }
   console.log(text);
   const ans = await request({
-    uri: "http://127.0.0.1:5000/predict",
+    uri: "https://senti-x-model.vercel.app/predict",
     body: { text: text },
     method: "POST",
     json: true,
@@ -43,7 +43,7 @@ const predict_link = asyncHandler(async (req, res) => {
 
   console.log(text);
   const ans = await request({
-    uri: "http://localhost:5001/predict",
+    uri: "https://senti-x-model.vercel.app/predict",
     body: { text: text },
     method: "POST",
     json: true,
