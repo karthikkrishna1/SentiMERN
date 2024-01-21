@@ -15,17 +15,21 @@ app.config['SECRET_KEY'] = 'hsu123nxhsuqw'
 
 @app.route('/predict', methods = ['POST'])
 def predict_sentiment():
-    data = request.get_json()
-    print(data)
+    try:
+        data = request.get_json()
+        print(data)
+        
+        clean_text = clean_message(data['text'])
+        sequences = tokenizer.texts_to_sequences([clean_text])
+        padded_sequences = tf.keras.preprocessing.sequence.pad_sequences(sequences, maxlen=100, padding='post')
+        preds = model.predict(padded_sequences)[0]
+        ans = np.argmax(preds)
+        print(ans)
+        if preds[ans] < 0.5:
+            result = "Not so Sure"
+        else:
+            result = "neutral" if ans == 1 else "positive" if  ans == 2 else "negative"
+        return jsonify(result)
+    except:
+        return jsonify("encountered error")
     
-    clean_text = clean_message(data['text'])
-    sequences = tokenizer.texts_to_sequences([clean_text])
-    padded_sequences = tf.keras.preprocessing.sequence.pad_sequences(sequences, maxlen=100, padding='post')
-    preds = model.predict(padded_sequences)[0]
-    ans = np.argmax(preds)
-    print(ans)
-    if preds[ans] < 0.5:
-        result = "Not so Sure"
-    else:
-        result = "neutral" if ans == 1 else "positive" if  ans == 2 else "negative"
-    return jsonify(result)
