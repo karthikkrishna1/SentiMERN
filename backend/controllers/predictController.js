@@ -8,13 +8,17 @@ const predict_sent = asyncHandler(async (req, res) => {
     return res.status(400).send("Enter text to Predict");
   }
   console.log(text);
-  const ans = await request({
-    uri: "https://sentix-production.up.railway.app/predict",
-    body: { text: text },
-    method: "POST",
-    json: true,
-  });
-  res.send(ans);
+  try {
+    const ans = await request({
+      uri: "https://sentix-production.up.railway.app/predict",
+      body: { text: text },
+      method: "POST",
+      json: true,
+    });
+    res.send(ans);
+  } catch (err) {
+    res.send("ERROR");
+  }
 });
 
 const predict_link = asyncHandler(async (req, res) => {
