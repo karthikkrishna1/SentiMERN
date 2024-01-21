@@ -29,6 +29,3 @@ def predict_sentiment():
     else:
         result = "neutral" if ans == 1 else "positive" if  ans == 2 else "negative"
     return jsonify(result)
-
-if __name__ == "__main__":
-    app.run(host = "0.0.0.0",port = PORT)
