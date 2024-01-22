@@ -31,7 +31,7 @@ export default function Heading() {
         variant="h6"
         component="div"
       >
-        SentiMERN
+        SentiX
       </Typography>
       {/* <Button color="inherit">Login</Button> */}
     </Box>
